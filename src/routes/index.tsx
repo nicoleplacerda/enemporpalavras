@@ -39,36 +39,14 @@ export const Route = createFileRoute("/")({
 function LandingPage() {
   useEffect(() => {
     document.documentElement.classList.add("scroll-smooth");
-    document.body.classList.add(
-      "antialiased",
-      "selection:bg-neon-400",
-      "selection:text-black",
-    );
+    document.body.classList.add("lp-body", "antialiased");
 
-    const style = document.createElement("style");
-    style.textContent = lpCss;
-    document.head.appendChild(style);
-
-    const cdn = document.createElement("script");
-    cdn.src = "https://cdn.tailwindcss.com";
-    let configScript: HTMLScriptElement | null = null;
-    let behavior: HTMLScriptElement | null = null;
-    cdn.onload = () => {
-      configScript = document.createElement("script");
-      configScript.textContent = twConfig;
-      document.head.appendChild(configScript);
-
-      behavior = document.createElement("script");
-      behavior.textContent = appJs;
-      document.body.appendChild(behavior);
-    };
-    document.head.appendChild(cdn);
+    const behavior = document.createElement("script");
+    behavior.textContent = appJs;
+    document.body.appendChild(behavior);
 
     return () => {
-      style.remove();
-      configScript?.remove();
-      cdn.remove();
-      behavior?.remove();
+      behavior.remove();
     };
   }, []);
 
