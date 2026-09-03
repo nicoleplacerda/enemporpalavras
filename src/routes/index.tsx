@@ -2,8 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect } from "react";
 
 import bodyHtml from "../lp/body.html?raw";
-import lpCss from "../lp/lp.css?raw";
-import twConfig from "../lp/tw-config.js?raw";
 import appJs from "../lp/app.js?raw";
 
 const title = "ENEM por Palavras-Chave — Guia Definitivo de Revisão";
