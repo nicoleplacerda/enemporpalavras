@@ -49,14 +49,15 @@ function LandingPage() {
     style.textContent = lpCss;
     document.head.appendChild(style);
 
-    const configScript = document.createElement("script");
-    configScript.textContent = `window.tailwind = window.tailwind || {};\n${twConfig}`;
-    document.head.appendChild(configScript);
-
     const cdn = document.createElement("script");
     cdn.src = "https://cdn.tailwindcss.com";
+    let configScript: HTMLScriptElement | null = null;
     let behavior: HTMLScriptElement | null = null;
     cdn.onload = () => {
+      configScript = document.createElement("script");
+      configScript.textContent = twConfig;
+      document.head.appendChild(configScript);
+
       behavior = document.createElement("script");
       behavior.textContent = appJs;
       document.body.appendChild(behavior);
@@ -65,7 +66,7 @@ function LandingPage() {
 
     return () => {
       style.remove();
-      configScript.remove();
+      configScript?.remove();
       cdn.remove();
       behavior?.remove();
     };
