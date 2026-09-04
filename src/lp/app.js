@@ -130,51 +130,5 @@
         setInterval(showSocialProof, 12000);
         setTimeout(showSocialProof, 3000);
 
-        function openCheckoutModal() {
-            const modal = document.getElementById('checkout-modal');
-            if (modal) modal.classList.remove('hidden');
-        }
-
-        function closeCheckoutModal() {
-            const modal = document.getElementById('checkout-modal');
-            if (modal) modal.classList.add('hidden');
-        }
-
-        function selectPayment(type) {
-            const pixBody = document.getElementById('payment-pix-body');
-            const cardBody = document.getElementById('payment-card-body');
-            const btnPix = document.getElementById('btn-pix');
-            const btnCard = document.getElementById('btn-card');
-
-            if (type === 'pix') {
-                pixBody.classList.remove('hidden');
-                cardBody.classList.add('hidden');
-                btnPix.className = "border-2 border-neon-400 bg-neon-400/10 p-3 rounded-xl flex items-center justify-center gap-2 text-white font-bold text-sm";
-                btnCard.className = "border border-chumbo-700 bg-chumbo-950 p-3 rounded-xl flex items-center justify-center gap-2 text-slate-400 font-bold text-sm hover:border-slate-500";
-            } else {
-                pixBody.classList.add('hidden');
-                cardBody.classList.remove('hidden');
-                btnCard.className = "border-2 border-neon-400 bg-neon-400/10 p-3 rounded-xl flex items-center justify-center gap-2 text-white font-bold text-sm";
-                btnPix.className = "border border-chumbo-700 bg-chumbo-950 p-3 rounded-xl flex items-center justify-center gap-2 text-slate-400 font-bold text-sm hover:border-slate-500";
-            }
-        }
-
-        function copyPixCode(btn) {
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<i class="fa-solid fa-check text-neon-400"></i> Código Copiado com Sucesso!';
-            btn.classList.add('bg-chumbo-950', 'border-neon-400');
-            
-            // Temporary clipboard fallback
-            const dummy = document.createElement('textarea');
-            dummy.value = '00020126580014br.gov.bcb.pix0136enem-palavras-chave-1990-2026520400005303986540519.905802BR5925ENEM PALAVRAS CHAVE6009SAO PAULO62070503DEF6304E21A';
-            document.body.appendChild(dummy);
-            dummy.select();
-            document.execCommand('copy');
-            document.body.removeChild(dummy);
-
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-                btn.classList.remove('bg-chumbo-950', 'border-neon-400');
-            }, 3000);
-        }
+    
     
